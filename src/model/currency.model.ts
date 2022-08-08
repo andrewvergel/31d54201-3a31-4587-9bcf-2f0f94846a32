@@ -5,16 +5,9 @@ export class Currency {
     public currency_symbol: any | undefined,
     public currency_total_supply: any | undefined,
     public currency_last_updated: any | undefined
-  ) {
-
-  }
+  ) {}
 }
 
 export class Exchange {
-  constructor(
-    public id: any | undefined,
-    public name: any | undefined,
-  ) {
-
-  }
+  constructor(public id: any | undefined, public name: any | undefined) {}
 }

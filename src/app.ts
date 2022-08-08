@@ -1,21 +1,19 @@
-import express from 'express';
-import { PORT } from './config';
-import { GetTheLatestCurrencies } from './utils';
+import { Server } from './shared/infra/http/express/Server';
 
-// Create express server
-const app: any = express();
+export class App {
+  server?: Server;
 
-app.get("/ping", (req: any, res: any) => {
-  res.send('pong');
-});
+  async start() {
+    const port = process.env.PORT || '3002';
+    this.server = new Server(port);
+    return this.server.listen();
+  }
 
-app.get("/criptos", async (req: any, res: any) => {
-  const currencies = await GetTheLatestCurrencies();
-  res.json({ total: currencies.length, currencies });
-});
+  get httpServer() {
+    return this.server?.getHTTPServer();
+  }
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
-
-export default app;
+  async stop() {
+    return this.server?.stop();
+  }
+}

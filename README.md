@@ -47,3 +47,21 @@ Run `yarn test` to run tests.
 
 Run `yarn dev` to start and automatically detect any source-code changes,
 restarting the server as well.
+
+---
+
+// Create express server
+const app: any = express();
+
+app.get('/ping', (req: any, res: any) => {
+res.send('pong');
+});
+
+app.get('/criptos', async (req: any, res: any) => {
+const currencies = await GetTheLatestCurrencies();
+res.json({ total: currencies.length, currencies });
+});
+
+app.listen(PORT, () => {
+console.log(`Server running at http://localhost:${PORT}`);
+});
