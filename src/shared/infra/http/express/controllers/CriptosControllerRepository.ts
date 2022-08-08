@@ -1,9 +1,13 @@
 import { Request, Response } from 'express';
-import httpStatus from 'http-status';
-import { IControllerRepository } from './IControllerRepository';
+import { ICriptosRepository } from './ICriptosRepository';
 
-export default class CriptosControllerRepository implements IControllerRepository {
-  async run(req: Request, res: Response) {
-    res.status(httpStatus.OK).send('OK');
+import CriptosService from '../../../../../criptos/domain/CriptosService';
+import { container } from 'tsyringe';
+
+export default class UserControllerRepository implements ICriptosRepository {
+  async getCriptos(req: Request, res: Response): Promise<Response> {
+    const criptosService = container.resolve(CriptosService);
+    const result = await criptosService.execute();
+    return res.json(result);
   }
 }

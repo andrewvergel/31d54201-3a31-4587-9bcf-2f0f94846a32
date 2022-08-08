@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Currency } from '../model/currency.model';
-import { COINMARKET_API_KEY, COINMARKET_API_URL, COINMARKET_TOTAL_CURRENCIES } from '../config';
+import { COINMARKET_API_KEY, COINMARKET_API_URL, COINMARKET_TOTAL_CURRENCIES } from '../shared/config';
 
 export async function GetTheLatestCurrencies(): Promise<any[]> {
   let bitcoin_api_url = COINMARKET_API_URL + 'cryptocurrency/listings/latest?limit=' + COINMARKET_TOTAL_CURRENCIES;

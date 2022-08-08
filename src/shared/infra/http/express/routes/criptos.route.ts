@@ -4,6 +4,6 @@ import { container, injectable } from 'tsyringe';
 @injectable()
 export default class CriptosRoute {
   register(router: Router) {
-    router.get('/criptos', (req, res) => container.resolve(CriptosControllerRepository).run(req, res));
+    router.get('/criptos', (req, res) => container.resolve(CriptosControllerRepository).getCriptos(req, res));
   }
 }

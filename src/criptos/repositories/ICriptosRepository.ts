@@ -7,5 +7,5 @@ export interface ICriptos {
 }
 
 export default interface ICriptosRepository {
-  getCriptos(): Promise<ICriptos | null>;
+  getCriptos(): Promise<ICriptos[] | null>;
 }
